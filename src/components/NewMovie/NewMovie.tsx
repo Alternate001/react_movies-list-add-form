@@ -18,7 +18,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (title && imgUrl && imdbUrl && imdbId) {
+    if (title.trim() && imgUrl.trim() && imdbUrl.trim() && imdbId.trim()) {
       onAdd({
         title: title,
         description: description || '',
@@ -84,7 +84,12 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
             type="submit"
             data-cy="submit-button"
             className="button is-link"
-            disabled={!title || !imgUrl || !imdbUrl || !imdbId}
+            disabled={
+              !title.trim() ||
+              !imgUrl.trim() ||
+              !imdbUrl.trim() ||
+              !imdbId.trim()
+            }
           >
             Add
           </button>
